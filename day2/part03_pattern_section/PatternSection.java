@@ -7,8 +7,8 @@ public class PatternSection {
     public static void main(String[] args) {
         // TODO: Call each method below in this order:
         printEdge();
-        // printDiamondTop();
-        // printDiamondBottom();
+        printDiamondTop();
+        printDiamondBottom();
         printEdge();
     }
 
@@ -36,6 +36,35 @@ public class PatternSection {
     // - use SIZE in all loop bounds (no magic numbers except 0/1)
     public static void printDiamondTop() {
 
+        // loop through the total rows in the top half of the diamond
+        // we know that when SIZE = 3, total rows is 6
+
+        for (int row = 1; row < SIZE * 2 + 1; row ++) {
+            // begin the row with a |
+            System.out.print("|");
+
+            /* when a value is decreasing in a loop, but the loop variable is increasing
+            you probably need to subtract to get that inverse relationship capptured
+            */
+
+            int dots = (SIZE * 2 ) - row;
+            // print leading dots 
+            for (int i = 0; i < dots; i ++) {
+                System.out.print(".");
+            }
+            int triangles = row;
+            // print triangles 
+            for (int i = 0; i < triangles; i ++) {
+                System.out.print("/\\");
+            }
+
+            // print trailing dots 
+             for (int i = 0; i < dots; i ++) {
+                System.out.print(".");
+            }
+            // end the row with a | and a new line
+            System.out.println("|");
+        }
 
     }
 
@@ -47,6 +76,35 @@ public class PatternSection {
     // - use SIZE in all loop bounds
     public static void printDiamondBottom() {
 
+        for (int row = 0; row < SIZE * 2; row ++) {
+            // begin the row with a |
+            System.out.print("|");
+
+            /* when a value is decreasing in a loop, but the loop variable is increasing
+            you probably need to subtract to get that inverse relationship capptured
+            */
+
+            int dots = row;
+            // print leading dots 
+            for (int i = 0; i < dots; i ++) {
+                System.out.print(".");
+            }
+            int triangles = SIZE * 2 - row;
+            // print triangles 
+            for (int i = 0; i < triangles; i ++) {
+                System.out.print("\\/");
+            }
+
+            // print trailing dots 
+             for (int i = 0; i < dots; i ++) {
+                System.out.print(".");
+            }
+            // end the row with a | and a new line
+            System.out.println("|");
+        }
+
+            
+
     }
     
 }
@@ -54,14 +112,14 @@ public class PatternSection {
 /* 
 
 +=*=*=*=*=*=*+
-|...../\.....|
-|..../\/\....|
+|...../\.....|    // when row = 0, we print 5 .   one /\,  then 5 .
+|..../\/\....|    // when row = 1; we print 4 .,  two /\,  then 4 .
 |.../\/\/\...|
 |../\/\/\/\..|
 |./\/\/\/\/\.|
 |/\/\/\/\/\/\|
-|\/\/\/\/\/\/|
-|.\/\/\/\/\/.|
+|\/\/\/\/\/\/|   // when row = 0, we print 0 .  6 /\  and then 0 .
+|.\/\/\/\/\/.|   // when row = 1, we print 1 ., 5 /\, then 1 .
 |..\/\/\/\/..|
 |...\/\/\/...|
 |....\/\/....|
